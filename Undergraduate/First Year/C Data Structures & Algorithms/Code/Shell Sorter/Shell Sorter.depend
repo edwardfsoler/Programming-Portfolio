@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1425735023 source:c:\users\edward\documents\university notes\semester 1\programming principles in c\c programs2\shell sorter\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

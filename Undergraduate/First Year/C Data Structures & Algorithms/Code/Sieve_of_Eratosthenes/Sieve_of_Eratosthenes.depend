@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1425734275 source:c:\users\edward\documents\university notes\semester 1\programming principles in c\c programs2\sieve_of_eratosthenes\main.c
+	<stdio.h>
+	<stdlib.h>
+

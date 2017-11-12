@@ -1,0 +1,4 @@
+textify([C1,C2,C3],_,[X],[X]).
+textify([C1,C2,C3],NC,[C1,C2,C3],[NC]).
+textify([C1,C2,C3],NC,[C1,C2,C3|T],[NC|R]):- textify([C1,C2,C3],NC,T,R).
+textify(L,NC,[H|T],[H|L2]):- textify(L,NC,T,L2).  

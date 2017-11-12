@@ -1,0 +1,4 @@
+Outlook, Temperature, Humidity, Wind
+Rain, Mild, High, Weak
+Sunny, Cool, Normal, Strong
+Rain, Hot, Normal, Weak

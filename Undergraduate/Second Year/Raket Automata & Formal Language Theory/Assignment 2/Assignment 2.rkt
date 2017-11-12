@@ -1,0 +1,160 @@
+#lang racket
+
+;Main function, used to test whether a given expression is a valid Regular Expression
+(define RE?
+  (lambda (list)
+    (cond ((not (charTester? list)) #f)
+          ((not (loopTester? list)) #f)
+          ((not (emptyBrackets? list)) #f)
+          ((not (numBrackets? 0 list)) #f)
+          ((not (listStart? list)) #f)
+          ((not (orderTest? list)) #f)
+          ;if all tests are passed, then expression is a valid RE
+          (else #t))))
+          
+
+;tests for single element membership within list 
+(define member?
+  (lambda (x list)
+    (cond ;if list has been completely searched through without success, then fail
+          ((null? list) #f)
+          ;if element is equal to the head of the list then return true
+          ((equal? x (car list)) #t)
+          ;if element is not equal to the head of the list then recursively call function with tail of the list
+          (else (member? x (cdr list))))))
+
+;tests whether the first given list is a subset of the second given list
+(define subset?
+  (lambda (l1 l2)
+    (cond ;if all of first list has been tested, then l1 is a subset of l2
+          ((null? l1) #t)
+          ;if the element at the head of l1 is in l2, then recursively call function with tail of l1
+          ((member? (car l1) l2) (subset? (cdr l1) l2))
+          ;if the element at the head of l1 is not in l2 then fail
+          (else #f))))
+
+;tests whether input characters are part of the regular expression character-set
+(define charTester?
+  (lambda (list)
+    (cond ;tests whether given list is a subset of the character set for a regular expression
+          ((subset? list '(a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z lamb empty + * & /)) #t)
+          ;if not, then fail
+          (else #f))))
+
+;tests whether a given element is a character or a close bracket '&'
+(define isAlphaOrBracketClose?
+  (lambda (x)
+    (cond ;if given element is a member of the set of characters and close bracket '&' then return true
+          ((member? x '(a b c d e f g h i j k l m n p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z & lamb empty)) #t)
+          ;else return false
+          (else #f))))
+
+;tests whether a given element is a character or an open bracket '/'
+(define isAlphaOrBracketOpen?
+  (lambda (x)
+    (cond ;if given element is a member of the set of characters and openn bracket '/' then return true 
+          ((member? x '(a b c d e f g h i j k l m n p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z / lamb empty)) #t)
+          ;else return false
+          (else #f))))
+
+;tests whether a given element is a character
+(define isAlpha?
+  (lambda (x)
+    (cond ;if given element is a memeber of the set of characters then return true
+          ((member? x '(a b c d e f g h i j k l m n p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z lamb empty)) #t)
+          ;else return false
+          (else #f))))
+
+;tests whether all occurences of '*' are in a valid format
+(define loopTester?
+  (lambda (list)
+    (cond ;if list is null, then it has been successfully searched and we returnt rue
+          ((null? list) #t)
+          ;if the list has length 1 and the element is a +, o or close bracket then fail
+          ((and (listEqualTo? 1 list) (not (member? (car list) '(+ o /)))) #t)
+          ;if the list has length 1 and the element is a +, o or close bracket then fail
+          ((and (listEqualTo? 1 list) (member? (car list) '(+ o /))) #f)
+          ;if element to the LHS of the '*' is not an input or ')' then return false
+          ((and (equal? '* (car (cdr list))) (and (not (equal? (car list) '*))(not(isAlphaOrBracketClose? (car list))))) #f)
+          ;if 2nd element in the list is not a '*' then recursively call function, skipping only one element
+          ((not (equal? '* (car (cdr list)))) (loopTester? (cdr list)))
+          ;if 2nd element is a '*' but the 1st is character, then recursively call function, skipping two element
+          (else (loopTester? (cdr (cdr list)))))))
+
+;tests for any pair of empty opening and closing brackets '/ &'
+(define emptyBrackets?
+(lambda (list)
+  (cond ;if list is null, then it has been successfully searched and we return true
+        ((null? list) #t)
+        ;if the character at the head of the list is an open bracket, and the following element is a closed bracket, then return false
+        ((and (equal? (car list) '/) (equal? (car (cdr list)) '&)) #f)
+        ;otherwise, recursively call function, passing the tail of the list
+        (else (emptyBrackets? (cdr list))))))
+
+;tests whether the number of opening brackets matches the number of closing brackets
+(define numBrackets?
+  (lambda (x list)
+    (cond ;if the number of found closing brackets is greater than the number of found opening brackets, then return false
+          ((< x '0) #f)
+          ;if we have searched through the whole list, and the number of opening and closing brackets does not match, then return false
+          ((and (null? list) (not (equal? x '0))) #f)
+          ;otherwise, if the list is null (and the number of opening and closing brackets is equal) return true
+          ((null? list) #t)
+          ;if an opening bracket is encountered, increment counter and recursively call function passing the tail of the list
+          ((equal? (car list) '/) (numBrackets? (+ x 1) (cdr list)))
+          ;if a closing bracket is encountered, decrement counter and recursively call function passing the tail of the list
+          ((equal? (car list) '&) (numBrackets? (- x 1) (cdr list)))
+          ;otherwise, if element encountered is not a opening/closing bracket then simply recursively call function with the tail of the list
+          (else (numBrackets? x (cdr list))))))
+
+;tests whether the list is of a given size
+(define listEqualTo?
+  (lambda (x list)
+    (cond ;if the list is null and the counter is 0, then return true
+          ((and (null? list) (equal? x 0)) #t)
+          ;if the list is null (and the counter is not equal to 0), then return false
+          ((null? list) #f)
+          ;if list is not null, recursively call function, decrementing the counter and passing the tail of the list
+          (else (listEqualTo? (- x 1) (cdr list))))))
+
+;tests whether a given element is an operator
+(define isOperator?
+  (lambda (x)
+    (cond ;if given element is an operator, then return true
+          ((member? x '(/ & * o +)) #t)
+          ;otherwise return false
+          (else #f))))
+
+;tests whether a given element is an operator
+(define isOperatorMinusStar?
+  (lambda (x)
+    (cond ;if given element is an operator, then return true
+          ((member? x '(/ & o +)) #t)
+          ;otherwise return false
+          (else #f))))
+
+;tests whether the first element in the list is a valid character
+(define listStart?
+  (lambda (list)
+    (cond ;if list is empty, then return false
+          ((null? list) #f)
+          ;if the very first element in the list is an operator other than an opening bracket '/', fail
+          ((and (isOperator? (car list)) (not (equal? (car list) '/))) #f)
+          ;otherwise return true
+          (else #t))))
+
+;tests whether the order of elements in the expression is valid (must be alternating operand and operator)
+(define orderTest?
+  (lambda (list)
+    (cond ;if the list has only one character and this character is not a '+' '/' or 'o' then return true
+          ((and (listEqualTo? 1 list) (not (member? (car list) '(+ / o)))) #t)
+          ;if the list has only one character and it is a '+' '/' or 'o', then fail
+          ((and (listEqualTo? 1 list) (member? (car list) '(+ / o))) #f)
+          ;if the element at the head of the list is a character (or close bracket '&') and the next element is an operator, then recursively call function with the tail of the list
+          ((and (or (isAlphaOrBracketClose? (car list)) (equal? (car list) '*)) (isOperator? (car (cdr list)))) (orderTest? (cdr list)))
+          ;if the element at the head of the list is an operator and the next element is a character (or an open bracket '/') then recursively call function with the tail of the list
+          ((and (isOperator? (car list)) (or (equal? (car list) '*) (isAlphaOrBracketOpen? (car (cdr list)))) (orderTest? (cdr list))))
+          ;if the element at the head of the list is an operator and the next element is a character (or an open bracket '/') then recursively call function with the tail of the list
+          ((and (isOperatorMinusStar? (car list)) (isAlphaOrBracketOpen? (car (cdr list)))) (orderTest? (cdr list)))
+          ;else fail, as no valid condition was met
+          (else #f))))

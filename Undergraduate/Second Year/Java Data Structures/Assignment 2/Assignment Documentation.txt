@@ -1,0 +1,91 @@
+-------- Programming Assignment 2: Graphs --------
+
+1) Name: 
+
+	Edward Fleri Soler
+
+2) Acknowledgement of Parts not working:
+	
+	All parts of the program have been tested and return satisfactory results.
+	No attempts for extra credit were made, and the finished program fulfills
+	all required tasks.
+
+3) Acknowledgement of Inefficiencies:
+
+	Within the myGraph class, the 'MyGraph', 'loadVertices' and 'loadEdges' functions
+	are all highly efficient, with constant run times due to the lack of loops.
+	The 'findAdjacentVertices' function is also efficient and completes in linear
+	time, with a single loop required to search all vertices and test for adjacency
+	to the given vertex. The 'checkIsAdjacent' function is also as, similarly to the 
+	'findAdjacentVertices' function, it must loop through all edges to match the given
+	vertices with their respective edge, and then return the weight of the edge.
+	These functions can not be made more efficient.
+	
+	The 'findRoute' function, may be considered to be the least efficient function in
+	this program. This function proceeds to perform Dijkstra's Algorithm to calculate
+	the shortest path from a start node to a destination. This algorithm required quadratic
+	time, as for each node, we must visit all adjacent nodes; resulting in a nested loop.
+	However, the main hashmap mapping vertices to their travel cost was not recognising
+	parameters passed from the 'adj' linked list, which was a linked list which stored
+	vertices adjacent to the given linked list.
+
+	Following multiple attempts to fix this bug, the only solution found was to map the
+	required vertex from this array list to the equivalent instance of the vertex in another
+	arraylist containing the key-set of the hashmap (for some reason, the hashmap 'vertices'
+	recognised vertex elements from this array set and not from the other). This therfore
+	involved searching through the new array list 'tester' containing the key-set, to find
+	the vertex equivalent to the adjacent vertex required. This therefore resulted in a
+	further nested loop, within the already nested loop. However, the two nested loops do
+	not run through the whole list of vertices on average, and is therefore has a negligable
+	effect on the overall run time of the program.
+
+	Other functions within the MyGraph class where also defined. The 'getMin' function
+	was used to search through an arraylist and return the element with the least weight.
+	It therefore served as the priority finder of a priority queue, taking linear time to
+	run to completion due to the required search through the queue. The 'getRoute' function
+	was also defined. This recursive function was used to generate a list of nodes in the
+	order they were visited on the path from the source node to the destination. This function
+	makes use of recursion, and has a linear running time, as the list of elements passed to it
+	was recursively reversed. When it comes to these two functions, neither could be made more
+	efficient.
+
+	The graph and the final route were output within the 'Routes' class. This involved nesting
+	two for-loops to run through a three-dimensional array, outputing values and indenting each
+	time. The adjacency matrix required quadratic time to be output, due to its two dimensional
+	shape. Therefore, I believe that this process could not have been made more efficient.
+
+4) Discussion of challenges encountered:
+
+	In my opinion, the most challenging part of this assignment, once the whole concept of
+	the program was understood, was to generate the MyRoute function. Multiple possible
+	approaches to this problem were available. Once I settled on Dijkstra's algorithm,
+	going about storing values such as edge weight and route order was challenging, as
+	multiple variables were being altered, stored and tested in a few steps. I believe that
+	the most challenging part of this function was to order the nodes visited in the 'route'
+	list, as the nodes had to be recursively searched, starting from the final node to the
+	start node. I found that the most efficient way to go about this was to create a seperate
+	function to sort out the visited nodes. This function would only be called once the
+	destination node was reached.
+
+	Another challenging portion of this assignment was outputting the graph on-screen following
+	assessment. I approached this problem by means of an adjacency matrix, and sought to output
+	the data by looping through this matrix, outputting values on screen. This process involved
+	a great deal of trial and error, as dealing with three dimensional matrices got confusing at
+	times. However, following attempts to order, indent and shift data around, a satisfactory
+	output was achieved.
+
+5) Discussion of test cases
+	
+	Two test cases for graphs were generated to test bugs on this program and ensure that the
+	program works efficiently. The first test case involved a decently large number of vertices,
+	with an equally decent number of edges between them. This test case was designed to test the
+	overall functionality of the program, and to ensure that the best route was selected when
+	multiple routes were available. The program seemed to respond well to this test case, and
+	therefore focus was shifted to divising a new test case. The second test case was designed to
+	test the programs handling of negative edge weights. The algorithm was coded so as to interpret
+	any negative weights between vertices as positive ones. Therefore, a test case with negative,
+	and positive, edge weights was deisgned. This test case only involved 3 vertices, as the first
+	test case already reassured that the actual functionality of the program is fine. The program
+	repsonded well to this test case, converting all negative edge weights to positive ones. 
+
+	These test cases therefore concluded that program was functionally, and efficiently sound.

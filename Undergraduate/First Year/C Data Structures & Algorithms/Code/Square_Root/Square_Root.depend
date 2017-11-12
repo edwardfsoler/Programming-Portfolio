@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1426106062 source:c:\users\edward\documents\university notes\semester 1\programming principles in c\c programs2\square_root\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

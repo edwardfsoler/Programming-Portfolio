@@ -1,0 +1,71 @@
+body{
+	background-image:url("4.jpg");
+	background-size: cover;
+    background-attachment: fixed;
+	opacity:0.75;
+	font-family: Verdana
+}
+
+#passWarning {
+    font-size: 9pt;
+    display:  none;
+    color: #bf0505;
+}
+
+#passMismatchWarning {
+    font-size: 9pt;
+    display:  none;
+    color: #bf0505;
+}
+
+#header{
+    background-color:rgba(215, 213, 213, 0.30);
+	color: black;
+	padding: 10px;
+	margin:  1%;
+    margin-bottom: 0.5%;
+}
+
+a:link{
+	text-decoration: none; /*to remove the underline under the links*/
+	color: black;
+	font-weight:bold;
+}
+
+    #WebTitle {
+    text-align: center;
+    color: black;
+    margin-top: 5%;
+   
+    }
+    
+    #WebTitle:hover{
+	text-decoration: none;
+	color:#363636;
+}
+
+#register {
+    position:  relative;
+    top: 100px;
+    width: 500px;
+    margin:  auto;
+    padding:  15px;
+    border: 3px solid #777;
+    background-color:rgba(215, 213, 213, 0.30);
+}
+
+#tastes {
+    position: relative;
+    top: 100px;
+    display: none;
+    width: 500px;
+    margin: auto;
+    padding:15px;
+    width: 500px;
+    background-color:rgba(215, 213, 213, 0.30);
+}
+
+#nextB  {
+    float: right;
+}
+

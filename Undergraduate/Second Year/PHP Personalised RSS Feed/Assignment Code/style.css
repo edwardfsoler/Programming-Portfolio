@@ -1,0 +1,218 @@
+/* '#' is used for an 'id' while '.' is used for a 'class' */
+body{
+	background-image:url("4.jpg");
+	background-size: cover;
+    background-attachment: fixed;
+	opacity:0.75;
+	font-family: Verdana
+}
+
+a:link{
+	text-decoration: none; /*to remove the underline under the links*/
+	color: black;
+	font-weight:bold;
+}
+
+.Class1{
+    vertical-align: middle;
+}
+
+a:visited{
+	text-decoration:none;
+	color:black;
+}
+a:hover{
+	text-decoration: none;
+	color:#363636;
+}
+
+h1,h2,h3{
+	margin: 0;
+}
+
+ul li{
+	display:inline;	
+}
+
+.addnew {
+    height: 6%;
+	width: 60%;
+}
+
+button{
+height:6%;
+margin-right:10%;
+top:100px;
+}
+
+#container{
+	background-color: green;
+	width: 85%;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+#header{
+    background-color:rgba(215, 213, 213, 0.30);
+	color: black;
+	padding: 10px;
+	margin:  1%;
+    margin-bottom: 0.5%;
+}
+
+#content{
+	padding: 10px;
+    position: absolute;
+    width: 26%;
+    left: 1%;
+    display:  inline-block;
+}
+
+#nav{
+	background-color: #BFBFBF;
+	/*opacity:0.7;*/
+	text-align: right;
+	margin-top: 0%;
+}
+
+#nav ul{
+	list-style-type: none; /*to remove bullets in lists*/
+	padding: 0px;
+}
+
+#nav.selected{
+	font-weight: bold;
+}
+
+#deleteLink{
+    float:  right;
+}
+
+#deleteBar{
+    margin: 1%;
+    padding:  1%;
+}
+
+#rssLinkURL{
+    background-color:rgba(215, 213, 213, 0.30);
+	overflow-y:scroll;
+	overflow-y:auto;
+    margin-top: 0.75%;
+    padding-left: 3%;
+    width: 100%;	
+    height: 40%;
+    margin-left: 0.5%
+}
+
+#WebTitle {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#categorySelector {
+    position: relative;
+    margin-top: 1%;
+    margin-left: 45%;
+}
+
+.rss{
+    overflow: hidden;
+	width: 100%;
+	background-color:rgba(215, 213, 213, 0.30);
+	/*opacity:0.5;*/
+	height: 20%;
+	margin-bottom: 2%;
+   
+}
+
+#WelcomeNote {
+    position: relative;
+    float: left;
+    margin-left: 1%;
+    margin-top: 6%;
+}
+
+#logOutButton {
+    float: right;
+    margin-right: 1%;
+    margin-top: 6%;
+}
+
+#rssOutput {
+    
+    width:70%;
+    margin: 1%;
+    float: right;
+}
+
+#rssPic{
+	background-color:rgba(215, 213, 213, 0.0);
+	padding: 3px;
+	margin: 10px;
+	width: 25%;
+    height: 24%;
+	float:left;
+}
+
+#rssTitle {
+    overflow: hidden;
+    color: black;
+    margin-left: 30%;
+    margin-top: 2.5%;
+    width: 65%;
+    height: 25%;
+}
+
+#rssContent{
+    overflow: hidden;
+    font-size: 80%;
+	background-color:rgba(215, 213, 213, 0.40);
+	/*opacity:0.7;*/
+	color: black;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 2%;
+	margin-left: 30%;
+	width: 65%;
+	height: 52%;
+    text-align: justify;
+}
+
+#footer{
+    display: none;
+	clear: both;/*this will clear it from floating anywhere*/
+	padding: 10px;
+	background-color:rgba(215, 213, 213, 0.30);
+	/*opacity:0.7;*/
+	color: black;
+	text-align: right;
+    margin: 1%;
+}
+
+#rsstitle {
+   
+    font-size: 70%;
+    width: 20%;
+    padding: 3px;
+    margin: 10px;
+    margin-left: 5.5%;
+    clear: both;
+    float: left;
+}    
+#pubdateoutput {
+    
+    margin-top: 1%;
+    font-size: 70%;
+    width: 20%;
+    padding: 3px;
+    margin: 10px;
+    margin-left: 4.7%;
+    clear: both;
+    float: left;
+}
+
+#extraDetails {
+    display: inline;
+}

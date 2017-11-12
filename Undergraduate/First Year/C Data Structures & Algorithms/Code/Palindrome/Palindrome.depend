@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1425580939 source:c:\users\edward\documents\university notes\programming principles in c\assignment\circular buffer code\palindrome\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

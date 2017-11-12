@@ -1,0 +1,3 @@
+occur(_,[],0).
+occur(X,[X|T],A):- occur(X,T,Temp), A is Temp+1.
+occur(X,[_|T],A):- occur(X,T,A).

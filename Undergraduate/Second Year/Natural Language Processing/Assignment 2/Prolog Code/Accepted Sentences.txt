@@ -1,0 +1,20 @@
+has/is (flight) {flightNo} {remark}
+has flight {flightNo} been delayed
+has the gate for flight {flightNo} opened/closed
+are flights leaving/departing to {destination}
+are flights arriving from {destination}
+do flights leave/depart to {destination}
+do flights arrive from {destination}
+did any flights from {source} {remark}
+is {airline} flying from/to {location}
+do {airline} fly to/from {location}
+When does {flightno} arrive/leave
+What is the (estimated) time of arrival/departure of (flight) {flightNo}
+What aircraft/plane is {flightNo}
+What is the status of flight {flightNo}
+What is the status of the flight from/to {location}
+How many flights arrive/depart from/to {location}
+How many flights are {remark}
+How many {airline} flights are there
+which airlines depart to/arrive from {location}
+Where does {Airline} fly to

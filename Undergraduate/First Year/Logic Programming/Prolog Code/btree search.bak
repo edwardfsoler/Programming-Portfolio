@@ -1,0 +1,21 @@
+/*function for appending item to a list*/
+app([],X,[X]).
+app([H|T],X,[H|R]):-app(T,X,R).
+
+/*function to merge two lists together*/
+listMerge(L,[],L).
+listMerge(L,[H|T],R):- app(L,H,R1), listMerge(R1,T,R).
+
+/*preOrder binary tree sorting algorithm*/
+preOrder(emptyTree,[]).
+preOrder(bTree(nil,Y,nil),[Y]).
+preOrder(bTree(nil,Y,Z),[Y|R]):- preOrder(Z,R).
+preOrder(bTree(X,Y,nil),[Y|R]):- preOrder(X,R).
+preOrder(bTree(X,Y,Z),([Y|R])):-preOrder(X,R1), preOrder(Z,R2), listMerge(R1,R2,R).
+ 
+/*search for a single element in a binary tree*/
+elementSearch(R,[R|L]).
+elementSearch(R,[_|L]):- elementSearch(R,L).
+
+/*final search function*/
+search(L,R):- preOrder(L,X), elementSearch(R,X).

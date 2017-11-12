@@ -1,0 +1,144 @@
+%Name: Edward Fleri Soler
+%ID#: 247696M
+%Date: 17/02/16
+%Title: DCG Assignment 1 
+
+%-------------------------------------------------------------------------- Grammar Rules --------------------------------------------------------------------------
+
+%Sentence Rules, ensuring that singular, and non-singular, nouns are paired up with the correct verb tenses respectively
+s --> nps, ved.
+s --> nps, ves.
+s --> np, ve.
+s --> np, ved.
+s --> nps, optrels.
+s --> np, optrel.
+
+%Grammar Rules for nounphrases, ensuring that singular, and non-singular, nouns are paired up with the correct determiners and adjective tenses respectively.
+nps --> ds, ns.
+np --> dp, npl.
+np --> adj, npl.
+nps --> adj, ns.
+np --> dp, adj, npl.
+nps --> ds, adj, ns.
+
+%Grammar Rules for optional relationship
+%optrel(s) --> []. is an alternative pathway with non 'optrel' predicate is offered at the 's' point in the grammar tree
+optrel --> rel, ve.
+optrel --> rel, ved.
+optrels --> rel, ves.
+optrels --> rel, ved.
+
+%Lexicons split into singular and plural ones to handle number agreement with verbs and nouns
+
+%singular nouns
+ns --> [boy].
+ns --> [girl].
+
+%plural nouns
+npl --> [boys].
+npl --> [girls].
+
+%plural determiners
+dp --> [the].
+dp --> [those].
+dp --> [these].
+
+%singular determiners
+ds --> [the]. %"the" can refer to both a plural noun or a singular noun
+ds --> [a].
+ds --> [this].
+ds --> [that].
+
+%adjectives
+adj --> [tall]. %No need for number agreement handling with adjectives
+adj --> [short].
+
+%verbs ending with no suffix
+ve --> [dance]. %present tense verb
+ve --> [jog].
+
+%verbs ending with an 'ed'
+ved --> [danced]. %past tense verb
+ved --> [jogged].
+
+%verbs ending in an 's'
+ves --> [dances]. %present tense singular verb
+ves --> [jogs].
+
+%optional relationship lexicons
+rel --> [that]. 
+rel --> [which].
+
+%------------------------------------------------------------------------ Parse tree code --------------------------------------------------------------------------
+
+%Sentence Rules
+s(s(NPS,VED)) --> nps(NPS), ved(VED).
+s(s(NPS,VES)) --> nps(NPS), ves(VES).
+s(s(NP,VE)) --> np(NP), ve(VE).
+s(s(NP,VED)) --> np(NP), ved(VED).
+s(s(NPS,OPTRELS)) --> nps(NPS), optrels(OPTRELS).
+s(s(NP,OPTREL)) --> np(NP), optrel(OPTREL).
+
+%Grammar Rules for nounphrases
+nps(nps(DS,NS)) --> ds(DS), ns(NS).
+np(np(DP,NPL)) --> dp(DP), npl(NPL).
+np(np(ADJ,NPL)) --> adj(ADJ), npl(NPL).
+nps(nps(AD,NS)) --> adj(AD), ns(NS).
+np(np(DP,ADJ,NPL)) --> dp(DP), adj(ADJ), npl(NPL).
+nps(nps(DS,ADJ,NS)) --> ds(DS), adj(ADJ), ns(NS).
+
+%Grammar Rules for optional relationship
+optrel(optrel(REL,VE)) --> rel(REL), ve(VE).
+optrel(optrel(REL,VED)) --> rel(REL), ved(VED).
+optrels(optrelS(REL,VES)) --> rel(REL), ves(VES).
+optrels(optrels(REL,VED)) --> rel(REL), ved(VED).
+
+%Lexicons split into singular and plural ones to handlue number agreement
+
+%singular nouns
+ns(ns(boy)) --> [boy].
+ns(ns(girl)) --> [girl].
+
+%plural nouns
+npl(npl(boys)) --> [boys].
+npl(npl(girls)) --> [girls].
+
+%plural determiners
+dp(dp(the)) --> [the].
+dp(dp(those)) --> [those].
+dp(dp(these)) --> [these].
+
+%singular determiners
+ds(ds(this)) --> [this].
+ds(ds(the)) --> [the]. %"the" can refer to both a plural noun or a singular noun
+ds(ds(a)) --> [a].
+ds(ds(that)) --> [that].
+
+%adjectives
+adj(adj(tall)) --> [tall]. %No need for number agreement handling with adjectives
+adj(adj(short)) --> [short].
+
+%verbs with no suffix
+ve(ve(dance)) --> [dance]. %present tense verb
+ve(ve(jog)) --> [jog].
+
+%verbs ending with an 'ed'
+ved(ved(danced)) --> [danced]. %past tense verb
+ved(ved(jogged)) --> [jogged].
+
+%verbs ending with an 's'
+ves(ves(jogs)) --> [jogs].
+ves(ves(dances)) --> [dances]. %present tense singular verb
+
+%optional relationship lexicons
+rel(rel(that)) --> [that].
+rel(rel(which)) --> [which].
+
+
+%6) The seperation of verbs into the groups of verbs ending with suffix 'ed', suffix 's' and no suffix allows for disagreements such as that in:
+%   "The policeman that solve the crime receives praise", to be overcome, as you may only add verbs ending in an 's' or 'ed' to singular nouns
+%   Furthermore, if the first verb is conjugated to end with an 's', the second must follow the same rule. The same also applies to ending in 'ed'.
+%   While plural nouns such as 'policemen' can only be paired with verbs ending in an 'ed' or no suffix. Example:
+%   "The policemen that solve/solved the crime receive/received praise".
+%   Therefore, the same approach that was implemented above may be implemented to ensure that the nouns and verbs are in agreement.
+

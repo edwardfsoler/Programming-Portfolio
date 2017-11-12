@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Advert Bidding</title>
+        <script type="text/javascript">
+            function updateBiddingSlider(value) {
+                var x = document.getElementById("biddingPrice");
+                x.innerHTML = "€" + value;
+                updateTotal();
+            }
+        </script> 
+        <link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+    <body>
+        <h3>Advert Bidding</h3>
+        <div id="biddingDiv">
+            <form method="POST" enctype="multipart/form-data" action="bidSubmit.php" name="adBidding" id="adBidding">
+				</br></br><label>First Name</label></br>
+                <input type="text" name="fname" id="fname" required></br></br>
+				<label>Last Name</label></br>
+                <input type="text" name="lname" id="lname" required></br></br>
+				<label>Company</label></br>
+                <input type="text" name="company" id="company" required></br></br>
+				<label>Email</label></br>
+				<input type="email" name="email" id="email" required></br></br>
+                <label>Advert Sound File mp3</label></br>
+				<input type="file" name="adFile" id="adFile" required ></br></br>
+                <label>Bidding Price per day</label></br>
+				<div id="priceGroup">
+                    <input type="range" name="biddingPrice" value="5.00" min="1.00" max="10.00" step="0.01" onchange="updateBiddingSlider(this.value)" required>
+				    <span id="biddingPrice">€5.00</span></br></br>
+                </div>
+                <label>Slot</label></br>
+                <select name="slot">
+                    <option value="1">1 (Morning)</option>      
+                    <option value="2">2 (Afternoon)</option>      
+                    <option value="3">3 (Evening)</option>      
+                </select></br></br>
+                
+                <input type="submit" value="Submit"></br></br>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            var d = new Date();
+            var h = d.getHours();
+            console.log(h);
+
+            if (h >= 8 && h < 20) {
+                document.getElementById("adBidding").style.display = "block";
+            }
+            else {
+                document.getElementById("adBidding").style.display = "none";
+                document.getElementById("biddingDiv").innerHTML = "Sorry, bidding is closed";
+            }
+        </script>
+    </body>
+</html>

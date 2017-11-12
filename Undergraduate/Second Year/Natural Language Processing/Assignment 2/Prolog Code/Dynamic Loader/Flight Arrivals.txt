@@ -1,0 +1,31 @@
+arrive('KM 376','BERLIN - TEGEL','18:20','18:20',airborne).
+arrive('TK 1372','ISTANBUL','18:55','18:45',airborne).
+arrive('KM 2702','ISTANBUL','18:55','18:45',airborne).
+arrive('FR 2278','BUDAPEST','19:10','N/A',closed).
+arrive('IG 9242','CATANIA','19:45','N/A',n/a).
+arrive('KM 642','CATANIA','19:45','N/A',n/a).
+arrive('FR 2472','EAST MIDLANDS','20:00','N/A',n/a).
+arrive('FR 8852','STANSTED','21:05','N/A',n/a).
+arrive('IB 5931','ROME','21:45','N/A',n/a).
+arrive('VY 6261','ROME','21:45','N/A',n/a).
+arrive('KM 7828','TEL AVIV YAFO - BEN ','01:55','N/A',n/a).
+arrive('IG 9240','CATANIA','06:00','N/A',n/a).
+arrive('KM 640','CATANIA','06:00','N/A',n/a).
+arrive('FR 3372','TURIN','06:25','N/A',n/a).
+arrive('AF 3040','CHARLES  DE GAULLE','06:30','N/A',n/a).
+arrive('KM 478','CHARLES  DE GAULLE','06:30','N/A',n/a).
+arrive('FR 5225','NIEDERRHEIN','06:35','N/A',n/a).
+arrive('FR 8929','LIVERPOOL','06:45','N/A',n/a).
+arrive('KM 100','HEATHROW','07:20','N/A',n/a).
+arrive('EY 7294','HEATHROW','07:20','N/A',n/a).
+arrive('KL 3398','AMSTERDAM','07:40','N/A',n/a).
+arrive('KM 394','AMSTERDAM','07:40','N/A',n/a).
+arrive('KM 612','ROME','08:35','N/A',n/a).
+arrive('IG 9212','ROME','08:35','N/A',n/a).
+arrive('KM 116','GATWICK','08:40','N/A',n/a).
+arrive('KM 306','MUNICH','08:45','N/A',n/a).
+arrive('LH 6307','MUNICH','08:45','N/A',n/a).
+arrive('FR 5195','KARLSRUHE / BADEN BA','09:00','N/A',n/a).
+arrive('EZS 1496','GENEVA','09:15','N/A',n/a).
+arrive('FR 5383','MADRID - BARAJAS','09:30','N/A',n/a).
+arrive('TO 3755','NANTES','09:45','N/A',n/a).

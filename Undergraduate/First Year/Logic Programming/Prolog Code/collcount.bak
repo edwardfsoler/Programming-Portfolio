@@ -1,0 +1,8 @@
+countDel(_,[],[],0).
+countDel(X,[X|T],R1,R2):- countDel(X,T,R1,Temp), R2 is Temp + 1.
+countDel(X,[H|T],[H|R1],R2):- countDel(X,T,R1,R2).
+
+
+collCount([],[]).
+collCount([H],[(H,1)]). 
+collCount([H|T],[(H,N)|T2]):- countDel(H,[H|T],Temp,N), collCount(Temp,T2).    

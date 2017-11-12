@@ -1,0 +1,3 @@
+wordTextify(_,_,[],[]).
+wordTextify(X,Y,[X|T],[Y|R]):- wordTextify(X,Y,T,R).
+wordTextify(X,Y,[Z|T],[Z|R]):- wordTextify(X,Y,T,R).

@@ -1,0 +1,55 @@
+    body{
+    background-image:url("4.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    opacity:0.75;
+    font-family: Verdana
+    }
+          
+#header{
+    background-color:rgba(215, 213, 213, 0.30);
+	color: black;
+	padding: 10px;
+	margin:  1%;
+    margin-bottom: 0.5%;
+}
+         
+    label {
+    font-weight:bold;
+    width:100px;
+    font-size:14px;
+    }
+         
+    .box {
+    border:#666666 solid 1px;
+    }
+          
+    #loginB {
+        background-color:rgba(215, 213, 213, 0.30);
+        position:  relative;
+        top: 100px;
+    }
+          
+    #createB {
+        background-color:rgba(215, 213, 213, 0.30);
+        position:  relative;
+        top: 100px;
+    }
+          
+    a:link{
+    text-decoration: none; /*to remove the underline under the links*/
+    color: black;
+    font-weight:bold;
+    }
+          
+    #WebTitle {
+    text-align: center;
+    color: black;
+    margin-top: 5%;
+   
+    }
+    
+    #WebTitle:hover{
+	text-decoration: none;
+	color:#363636;
+}

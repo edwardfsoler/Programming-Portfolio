@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1426107573 source:c:\users\edward\documents\university notes\semester 1\programming principles in c\c programs2\cosine_calculator\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1428317569 source:c:\users\edward\documents\university notes\semester 2\data structures and algorithms\assignment\code\trigonometric_calculator\main.c
+	<stdio.h>
+	<math.h>
+

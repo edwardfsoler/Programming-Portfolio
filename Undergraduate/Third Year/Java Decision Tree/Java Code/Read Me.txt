@@ -1,0 +1,15 @@
+Coded by Edward Fleri Soler 14/12/16
+
+Apache Commons Lang library is made use of in this application. 'org' folders containing
+the java tools required may be found in both bin and src. This library was downloaded
+from:  https://commons.apache.org/proper/commons-lang/download_lang.cgi
+
+Java files 'DecisionTree' and 'Node' may be found in src
+Java Class files for 'DecisionTree' and 'Node' may be found in bin
+
+Training data may be found in 'Dataset.txt'. The first line in this file relates to the
+attribute titles, while the remaining lines relate to training examples
+
+Testing data may be found in 'TestData.txt'. The first line in this file relates to the
+attribute titles, excluding the target attribute, while the remaining lines relate to the
+testing examples, excluding the target attribute.

@@ -1,0 +1,74 @@
+Programming Assignment 1: Write-up & Test Cases
+
+1) 	Names: Quinn Murphy & Edward Fleri Soler
+
+2) 	Acknowledgement of program errors:
+	
+	The code was scanned through and tested multiple times, and all run-time and syntax errors
+	were corrected so as to allow for the program to run to completion. However, a few logical
+	errors in the output, suggest that some logical flaw in the methods 'resegment' and/or 'computeCounts'
+	exists. This is due to the fact that the output provided lists a number of words, however these
+	words do not completely match with the sample output provided. Otherwise, the program runs to
+	completion in an efficient manner. The program code was re-designed and debugged multiple times
+	so as to increase the efficiency of the run-time.
+
+3)	Acknowledgement of inefficiencies:
+
+	Following the first complete version of the program, the code was observed and run multiple times
+	in an attempt to make it more efficient. Multiple nested loops were redesigned to avoid nesting,
+	while still completing their purpose. The first running version of this program included multiple
+	data type conversions, which were wholely unnecessary. Therefore these were modified to avoid data
+	type conversion where possible. The only method which contains a nested loop is the 'convertCountToProbs'
+	method, which runs through each bigram, searching for the space seperating the left and right unigrams.
+	This nested situation is unavoidable. This does not lead to any significant inefficiency as the nested
+	loop does not loop through a large number of times, as it simply loops through characters within a
+	given String.
+
+4)	Challenging Sections of Code
+	
+	The following are the methods which we found most challenging in this assignment:
+
+	resegment: It wasn't as easy to understand the goal behind this method, compared to others. Representing the 
+	desired logic as code was difficult, especially when determining how to loop through the unigrams, combining 
+	them into bigrams.
+
+	computeCounts: The most difficult part of this method was related to efficiency. We tried multiple different
+	approaches to reduce runtime, and ended up eliminating a few nested for loops.
+	
+	convertCountsToProbs: The two most difficult parts of this method were seperating the bigram into left and right 
+	unigrams (determining the whiteSpace's position within the String), and calculating the correct probability
+	to the right level of precision. Since so many variables were involved, it got rather confusing.
+
+5)	Testing:
+
+	test1.txt is simply a shortened version of the supplied input (javaTextbook.txt), meant to test the correctness of 
+	our output, and not the efficiency. We used this early on to make sure that our output at least looked correct.
+
+	test2.txt was used to test the computeCounts method. It is simply repetitive bigrams that we could count manually
+	in order to test the correctness of computeCounts.
+
+	Both test cases ran to completion. Therefore, we know that the program is asymptotically efficient.
+
+6)	Input arguments and their effect on the output:
+
+	For this test, the test1.txt file was used as efficiency does not affect the results of this test. The following
+	are a list of count threshold and probability threshold values, and their resulting output:
+
+	(Count Threshold, Probability Threshold) = (Unique words, Word count)
+
+	2, 0.05 = 161 697
+
+	2, 0.03 = 161 673
+
+	3, 0.05 = 116 895
+
+	5, 0.1 = 83 1190
+
+	7, 0.1 = 63, 1289
+
+	2, 0.1 = 164 808	
+
+	By means of this test it is evident that the higher the given count threshold is set to, the lesser number of unique words
+	and the greater number of total words. It is also apparent that the probability threshold only effects the total number of
+	words and not the total number of unique words. It seems that the higher the probability is set, the greater number of total
+	words output.
